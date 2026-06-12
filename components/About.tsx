@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-36 px-6">
+      {/* Floats right of center, not centered */}
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="text-xs uppercase tracking-[0.2em] mb-8 font-medium label-gradient">
             About

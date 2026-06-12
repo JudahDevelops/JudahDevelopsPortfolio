@@ -10,7 +10,7 @@ interface SkillGroup {
 const skillGroups: SkillGroup[] = [
   {
     category: "Automation Tools",
-    skills: ["n8n", "HubSpot", "Instantly.ai", "Hunter.io", "Zapier / Make"],
+    skills: ["n8n", "HubSpot", "Instantly.ai", "Hunter.io"],
   },
   {
     category: "Development",
@@ -56,7 +56,7 @@ const tagVariants: Variants = {
 
 export default function Skills() {
   return (
-    <section className="py-24 px-6 border-t border-[#1F1F1F]">
+    <section className="py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

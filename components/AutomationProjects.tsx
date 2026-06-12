@@ -37,7 +37,7 @@ const containerVariants = {
 
 export default function AutomationProjects() {
   return (
-    <section id="automation" className="py-24 px-6 border-t border-[#1F1F1F]">
+    <section id="automation" className="py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

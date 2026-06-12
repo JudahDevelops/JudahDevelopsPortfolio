@@ -53,7 +53,7 @@ function CopyChip({ label, value }: { label: string; value: string }) {
 
 export default function Contact() {
   return (
-    <section className="py-24 px-6 border-t border-[#1F1F1F]">
+    <section className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -106,7 +106,7 @@ export default function Contact() {
 
       {/* Footer */}
       <motion.div
-        className="max-w-6xl mx-auto mt-24 pt-8 border-t border-[#1F1F1F] flex flex-col sm:flex-row justify-between items-center gap-4"
+        className="max-w-6xl mx-auto mt-24 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

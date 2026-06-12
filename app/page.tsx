@@ -6,10 +6,12 @@ import WebProjects from "@/components/WebProjects";
 import BelsoftProjects from "@/components/BelsoftProjects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
+import PageGlow from "@/components/PageGlow";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
+      <PageGlow />
       <Hero />
       <About />
       <Experience />

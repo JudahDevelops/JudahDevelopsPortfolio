@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import HeroGlow from "./HeroGlow";
 
 export default function Hero() {
   const handleViewProjects = () => {
@@ -10,10 +9,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-
-      {/* ── Top glow pool (Gemini-style) ─────────────────────────────────── */}
-      <HeroGlow />
+    <section className="relative min-h-screen flex items-center justify-center">
 
       {/* ── Dot grid ─────────────────────────────────────────────────────── */}
       <div
