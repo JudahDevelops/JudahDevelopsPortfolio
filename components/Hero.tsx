@@ -11,14 +11,9 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center">
 
-      {/* ── Top gradient beam (Gemini-style) ─────────────────────────────── */}
+      {/* ── Top glow pool (Gemini-style) ─────────────────────────────────── */}
       <div
-        className="absolute top-0 left-0 right-0 h-[3px] z-20"
-        style={{ background: "linear-gradient(90deg, #00D4FF 0%, #7B2FFF 50%, #E040FB 100%)" }}
-      />
-      <div
-        className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-10"
-        style={{ background: "linear-gradient(to bottom, rgba(123,47,255,0.18) 0%, transparent 100%)" }}
+        className="hero-top-glow absolute top-0 left-0 right-0 pointer-events-none z-10"
       />
 
       {/* ── Dot grid ─────────────────────────────────────────────────────── */}

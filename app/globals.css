@@ -172,6 +172,31 @@ main {
   z-index: 1;
 }
 
+/* ── Hero top glow pool (Gemini-style) ──────────────────────────────────── */
+.hero-top-glow {
+  height: 340px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%,  rgba(0, 212, 255, 0.55)  0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 30% -15%,  rgba(123, 47, 255, 0.50) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 70% -10%,  rgba(224, 64, 251, 0.40) 0%, transparent 60%);
+  animation: top-glow-pulse 5s ease-in-out infinite;
+}
+
+@keyframes top-glow-pulse {
+  0%, 100% {
+    opacity: 0.75;
+    transform: scaleX(1)    scaleY(1);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleX(1.06) scaleY(1.12);
+  }
+  66% {
+    opacity: 0.85;
+    transform: scaleX(0.96) scaleY(0.94);
+  }
+}
+
 /* ── Card / element hover glow (pointer-tracking aurora pulse) ──────────── */
 
 /* The glow blob that follows the cursor — positioned via --mouse-x/y */
