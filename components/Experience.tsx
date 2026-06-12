@@ -18,7 +18,7 @@ const experience: Role[] = [
     period: "Jul 2025 — Present",
     type: "Contract · Remote",
     description:
-      "Building production web applications across multiple client projects. Delivered a full e-commerce store (Florece\u2019s Place) with Sanity CMS, integrated payments, and SEO. Built a church website for The Father\u2019s Church with React and Sanity. Developed an internal admin dashboard covering job oversight, account management, and performance metrics. Work spans UI/UX design through to deployment.",
+      "Building production web applications across multiple client projects. Delivered a full e-commerce store (Florece\u2019s Place) with Sanity CMS, integrated payments, and SEO. Built a personal brand and coaching site (Cannon Thoughts With IB) and a church website (The Father\u2019s Church), both with React and Sanity. Developed an internal admin dashboard covering job oversight, account management, and performance metrics. Work spans UI/UX design through to deployment.",
     skills: ["Next.js", "React", "TypeScript", "Sanity.io", "Tailwind CSS", "UI/UX Design", "SEO"],
   },
 ];

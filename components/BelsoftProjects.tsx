@@ -23,6 +23,16 @@ const ChurchIcon = (
   </svg>
 );
 
+// Microphone SVG for coaching/personal brand site
+const MicIcon = (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <rect x="9" y="2" width="6" height="11" rx="3" />
+    <path d="M5 10a7 7 0 0 0 14 0" />
+    <line x1="12" y1="17" x2="12" y2="22" />
+    <line x1="8" y1="22" x2="16" y2="22" />
+  </svg>
+);
+
 const projects: Project[] = [
   {
     title: "Florece\u2019s Place — E-Commerce Store",
@@ -31,6 +41,14 @@ const projects: Project[] = [
     stack: ["Next.js", "Sanity.io", "Tailwind CSS", "TypeScript", "SEO"],
     liveUrl: "https://www.florecersplace.com/",
     placeholderIcon: ShoppingCartIcon,
+  },
+  {
+    title: "Cannon Thoughts With IB — Personal Brand Site",
+    description:
+      "Multi-page personal brand and coaching site for a Nigerian leadership development consultant. Features an impact statistics section, testimonials carousel, programs listing, articles, and a contact form via EmailJS. Built with React, Sanity CMS for content management, and Framer Motion animations.",
+    stack: ["React", "Sanity.io", "Tailwind CSS", "Framer Motion", "EmailJS"],
+    liveUrl: "https://www.cannonthoughtswithib.com/",
+    placeholderIcon: MicIcon,
   },
   {
     title: "The Father\u2019s Church — Website",
@@ -79,7 +97,7 @@ export default function BelsoftProjects() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
