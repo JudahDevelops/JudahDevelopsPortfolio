@@ -24,38 +24,20 @@ export default function Contact() {
           <p className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-4 font-medium">
             Contact
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-12">
-            Why I&apos;m a Fit
+          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+            Let&apos;s Work Together
           </h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="bg-[#111111] border border-[#1F1F1F] rounded-lg p-8 mb-12"
-          >
-            <div
-              className="w-8 h-0.5 mb-6"
-              style={{ backgroundColor: "#00D4FF" }}
-            />
-            <p className="text-lg sm:text-xl text-white/80 leading-relaxed font-light">
-              8cast needs someone who can run the full outbound stack — from
-              scraping and enriching lead lists to launching campaigns and
-              routing replies back into the CRM. That&apos;s exactly what
-              I&apos;ve built. I&apos;ve shipped n8n workflows that handle lead
-              enrichment, HubSpot sync, Instantly.ai campaign enrollment, and
-              AI-powered reply classification — all in production. I work clean,
-              move fast, and know these tools beyond the tutorial level.
-            </p>
-          </motion.div>
+          <p className="text-[#888888] text-lg mb-12 max-w-xl">
+            Open to contracts, freelance projects, and collaborations across
+            automation, web development, AI consulting, and UI/UX design.
+          </p>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
             <a
               href="mailto:judahdevelops@gmail.com"
@@ -95,7 +77,7 @@ export default function Contact() {
         transition={{ delay: 0.4, duration: 0.5 }}
       >
         <p className="text-[#888888] text-sm">
-          Judah &mdash; CS Student, Nile University of Abuja
+          Judah Oka &mdash; CS Student, Nile University of Abuja
         </p>
         <p className="text-[#888888] text-xs">
           Built with Next.js · Tailwind CSS · Framer Motion
