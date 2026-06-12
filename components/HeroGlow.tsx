@@ -19,7 +19,7 @@ export default function HeroGlow() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 z-10 overflow-hidden"
-        style={{ height: "480px" }}
+        style={{ height: "520px" }}
       >
         {/* ── Blob 1: Deep blue — primary, widest, centered ── */}
         <div
