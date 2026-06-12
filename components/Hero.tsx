@@ -82,11 +82,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Bottom fade ──────────────────────────────────────────────────── */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, #0A0A0A)" }}
-      />
     </section>
   );
 }
