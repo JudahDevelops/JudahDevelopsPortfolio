@@ -65,7 +65,7 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-4 font-medium">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
             Skills
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
@@ -96,7 +96,7 @@ export default function Skills() {
                   <motion.span
                     key={skill}
                     variants={tagVariants}
-                    className="px-3.5 py-2 text-sm font-medium bg-[#111111] border border-[#1F1F1F] text-white rounded hover:border-[#00D4FF]/50 hover:text-[#00D4FF] transition-colors duration-200 cursor-default"
+                    className="gradient-border px-3.5 py-2 text-sm font-medium bg-[#111111] border border-[#1F1F1F] text-white rounded transition-colors duration-200 cursor-default"
                   >
                     {skill}
                   </motion.span>

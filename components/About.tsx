@@ -12,7 +12,7 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-8 font-medium">
+          <p className="text-xs uppercase tracking-[0.2em] mb-8 font-medium label-gradient">
             About
           </p>
           <p className="text-2xl sm:text-3xl text-white/90 leading-relaxed font-light tracking-tight">

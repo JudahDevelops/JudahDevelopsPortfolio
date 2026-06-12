@@ -54,7 +54,7 @@ export default function WebProjects() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-4 font-medium">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
             Web Development
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">

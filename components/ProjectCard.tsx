@@ -83,7 +83,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       variants={cardVariants}
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden hover:border-[#00D4FF]/30 transition-colors duration-300"
+      className="gradient-border flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden transition-colors duration-300"
     >
       <CardHeader project={project} />
 
@@ -112,7 +112,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:border-[#00D4FF] hover:text-[#00D4FF] transition-colors duration-200"
+              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded transition-colors duration-200"
             >
               <GitHubIcon size={15} />
               GitHub
@@ -124,7 +124,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:border-[#00D4FF] hover:text-[#00D4FF] transition-colors duration-200"
+              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded transition-colors duration-200"
             >
               Live Site
               <ExternalLink size={12} className="opacity-60" />

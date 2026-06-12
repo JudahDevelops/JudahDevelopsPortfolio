@@ -34,7 +34,7 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-4 font-medium">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
             Experience
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
@@ -53,13 +53,13 @@ export default function Experience() {
               className="relative pl-6 border-l border-[#1F1F1F]"
             >
               {/* Timeline dot */}
-              <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#00D4FF]" />
+              <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full" style={{ background: "linear-gradient(135deg, #00D4FF, #7B2FFF)" }} />
 
               <div className="bg-[#111111] border border-[#1F1F1F] rounded-lg p-8 hover:border-[#00D4FF]/30 transition-colors duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                   <div>
                     <h3 className="text-xl font-bold text-white">{role.company}</h3>
-                    <p className="text-[#00D4FF] font-medium mt-0.5">{role.title}</p>
+                    <p className="font-medium mt-0.5 label-gradient">{role.title}</p>
                   </div>
                   <div className="text-right shrink-0">
                     <p className="text-sm text-white/80 font-medium">{role.period}</p>

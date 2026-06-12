@@ -21,7 +21,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-4 font-medium">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
             Contact
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
@@ -41,7 +41,7 @@ export default function Contact() {
           >
             <a
               href="mailto:judahdevelops@gmail.com"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#00D4FF] text-[#0A0A0A] font-semibold rounded text-sm uppercase tracking-wider hover:bg-[#00b8d9] transition-colors duration-200"
+              className="btn-gradient inline-flex items-center gap-3 px-7 py-3.5 font-semibold rounded text-sm uppercase tracking-wider"
             >
               <Mail size={16} />
               Email Me
@@ -50,7 +50,7 @@ export default function Contact() {
               href="https://wa.me/2349035837363"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-3.5 border border-[#1F1F1F] text-white font-semibold rounded text-sm uppercase tracking-wider hover:border-[#00D4FF] hover:text-[#00D4FF] transition-colors duration-200"
+              className="gradient-border inline-flex items-center gap-3 px-7 py-3.5 border border-[#2A2A2A] text-white font-semibold rounded text-sm uppercase tracking-wider transition-colors duration-200"
             >
               <Phone size={16} />
               WhatsApp
@@ -59,7 +59,7 @@ export default function Contact() {
               href="https://github.com/JudahDevelops"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-3.5 border border-[#1F1F1F] text-white font-semibold rounded text-sm uppercase tracking-wider hover:border-[#00D4FF] hover:text-[#00D4FF] transition-colors duration-200"
+              className="gradient-border inline-flex items-center gap-3 px-7 py-3.5 border border-[#2A2A2A] text-white font-semibold rounded text-sm uppercase tracking-wider transition-colors duration-200"
             >
               <GitHubIcon size={16} />
               GitHub

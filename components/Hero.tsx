@@ -4,105 +4,107 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   const handleViewProjects = () => {
-    const el = document.getElementById("projects");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    const el = document.getElementById("automation");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      {/* Dot grid background */}
+
+      {/* ── Aurora background blobs ─────────────────────────────────────── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Blue blob — top left */}
+        <div
+          className="aurora-1 absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-[0.12]"
+          style={{ background: "radial-gradient(circle, #00D4FF 0%, transparent 70%)" }}
+        />
+        {/* Purple blob — center */}
+        <div
+          className="aurora-2 absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-[0.10]"
+          style={{ background: "radial-gradient(circle, #7B2FFF 0%, transparent 65%)" }}
+        />
+        {/* Magenta blob — bottom right */}
+        <div
+          className="aurora-3 absolute -bottom-40 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.09]"
+          style={{ background: "radial-gradient(circle, #E040FB 0%, transparent 70%)" }}
+        />
+      </div>
+
+      {/* ── Dot grid ─────────────────────────────────────────────────────── */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, #1F1F1F 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #2A2A2A 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
 
-      {/* Radial glow at center */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,212,255,0.06) 0%, transparent 70%)",
-        }}
-      />
-
+      {/* ── Content ──────────────────────────────────────────────────────── */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+
+        <motion.p
+          className="text-sm uppercase tracking-[0.25em] mb-6 font-medium label-gradient"
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 0.15, duration: 0.6 }}
         >
-          <motion.p
-            className="text-sm uppercase tracking-[0.25em] text-[#00D4FF] mb-6 font-medium"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Sales Automation · Web Development
-          </motion.p>
+          Sales Automation · Web Development · AI Consulting
+        </motion.p>
 
-          <motion.h1
-            className="text-7xl sm:text-8xl md:text-9xl font-bold tracking-tight text-white leading-none mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-          >
-            Judah Oka
-          </motion.h1>
+        <motion.h1
+          className="text-7xl sm:text-8xl md:text-9xl font-bold tracking-tight leading-none mb-8 gradient-text"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        >
+          Judah Oka
+        </motion.h1>
 
-          <motion.p
-            className="text-xl sm:text-2xl md:text-3xl text-white/90 font-medium mb-4 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.7 }}
-          >
-            Automation systems. AI consulting. Web development.
-          </motion.p>
+        <motion.p
+          className="text-xl sm:text-2xl md:text-3xl text-white/90 font-medium mb-4 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.7 }}
+        >
+          Automation systems. AI consulting. Web development.
+        </motion.p>
 
-          <motion.p
-            className="text-base sm:text-lg text-[#888888] mb-12 tracking-wide"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            n8n · HubSpot · Instantly.ai · React · UI/UX
-          </motion.p>
+        <motion.p
+          className="text-base sm:text-lg text-[#888888] mb-12 tracking-wide"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          n8n · HubSpot · Instantly.ai · React · UI/UX
+        </motion.p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75, duration: 0.6 }}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.6 }}
+        >
+          <button
+            onClick={handleViewProjects}
+            className="btn-gradient px-8 py-3.5 font-semibold rounded text-sm uppercase tracking-wider cursor-pointer"
           >
-            <button
-              onClick={handleViewProjects}
-              className="px-8 py-3.5 bg-[#00D4FF] text-[#0A0A0A] font-semibold rounded text-sm uppercase tracking-wider hover:bg-[#00b8d9] transition-colors duration-200 cursor-pointer"
-            >
-              View Projects
-            </button>
-            <a
-              href="https://github.com/JudahDevelops"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 border border-[#1F1F1F] text-white font-semibold rounded text-sm uppercase tracking-wider hover:border-[#00D4FF] hover:text-[#00D4FF] transition-colors duration-200"
-            >
-              GitHub
-            </a>
-          </motion.div>
+            View Projects
+          </button>
+          <a
+            href="https://github.com/JudahDevelops"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gradient-border px-8 py-3.5 border border-[#2A2A2A] text-white font-semibold rounded text-sm uppercase tracking-wider hover:text-white transition-colors duration-200"
+          >
+            GitHub
+          </a>
         </motion.div>
       </div>
 
-      {/* Bottom fade */}
+      {/* ── Bottom fade ──────────────────────────────────────────────────── */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, transparent, #0A0A0A)",
-        }}
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #0A0A0A)" }}
       />
     </section>
   );
