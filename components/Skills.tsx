@@ -24,8 +24,12 @@ const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    category: "AI Tools",
-    skills: ["Claude", "DeepSeek"],
+    category: "AI & Consulting",
+    skills: ["Claude", "DeepSeek", "AI Workflow Design", "Prompt Engineering"],
+  },
+  {
+    category: "UI/UX Design",
+    skills: ["Figma", "Responsive Design", "Dashboard UI", "Component Systems"],
   },
 ];
 
@@ -70,7 +74,7 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-3 gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

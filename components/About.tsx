@@ -19,11 +19,14 @@ export default function About() {
             I&apos;m a Computer Science student at{" "}
             <span className="text-white font-medium">
               Nile University of Abuja
-            </span>
-            . I build automation pipelines and web applications — currently
-            specializing in sales automation and AI-powered outreach systems.
-            At 16, I&apos;ve shipped production n8n workflows that run lead
-            enrichment, CRM sync, and cold email campaigns end to end.
+            </span>{" "}
+            working across sales automation, AI consulting, web development, and
+            UI/UX design. Since July 2025 I&apos;ve been building production
+            systems at{" "}
+            <span className="text-white font-medium">Belsoft Systems</span> —
+            shipping dashboards, automation pipelines, and CRM workflows that
+            run end to end. I&apos;m 17 and already operating at a professional
+            level across the full stack.
           </p>
         </motion.div>
       </div>

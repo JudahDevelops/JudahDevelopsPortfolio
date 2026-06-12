@@ -8,9 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Judah — Sales Automation & Web Dev",
+  title: "Judah Oka — Automation, AI Consulting & Web Dev",
   description:
-    "Portfolio of Judah — CS student at Nile University of Abuja building production-grade n8n automation pipelines, HubSpot CRM systems, and AI-powered outreach workflows.",
+    "Portfolio of Judah Oka — CS student at Nile University of Abuja building production-grade automation systems, AI-powered outreach workflows, and web applications.",
 };
 
 export default function RootLayout({

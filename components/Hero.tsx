@@ -52,7 +52,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
-            Judah
+            Judah Oka
           </motion.h1>
 
           <motion.p
@@ -61,7 +61,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.7 }}
           >
-            I build outbound systems that run themselves.
+            Automation systems. AI consulting. Web development.
           </motion.p>
 
           <motion.p
@@ -70,7 +70,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            n8n · HubSpot · Instantly.ai · AI-powered outreach
+            n8n · HubSpot · Instantly.ai · React · UI/UX
           </motion.p>
 
           <motion.div

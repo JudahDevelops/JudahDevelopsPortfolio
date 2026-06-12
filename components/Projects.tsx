@@ -15,11 +15,23 @@ interface Project {
   title: string;
   description: string;
   stack: string[];
-  youtubeEmbed: string;
+  youtubeEmbed: string | null;
   github: string;
+  liveUrl?: string | null;
+  role?: string;
 }
 
 const projects: Project[] = [
+  {
+    title: "Belsoft Systems — Admin Dashboard",
+    description:
+      "Full admin dashboard built for Belsoft Systems. Features a collapsible sidebar, job oversight panel, account management table, revenue chart (Recharts), performance metrics, and full mobile responsiveness — designed and shipped to production.",
+    stack: ["React", "TypeScript", "Vite", "Recharts", "Tailwind CSS", "Hero Icons"],
+    youtubeEmbed: null,
+    github: "https://github.com/JudahDevelops/belsoftLandingPage",
+    liveUrl: null,
+    role: "Belsoft Systems · Jul 2025",
+  },
   {
     title: "AI Lead Enrichment Pipeline",
     description:
@@ -88,11 +100,11 @@ export default function Projects() {
             Projects
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-            Production Workflows
+            Work & Projects
           </h2>
           <p className="text-[#888888] mt-4 text-lg max-w-2xl">
-            Three n8n automation systems built from scratch — each one handling
-            a stage of the outbound sales stack.
+            Production systems — a client dashboard, n8n automation pipelines,
+            and CRM workflows, all built and shipped.
           </p>
         </motion.div>
 
@@ -111,20 +123,34 @@ export default function Projects() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden hover:border-[#00D4FF]/30 transition-colors duration-300"
             >
-              {/* Video embed */}
-              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  src={project.youtubeEmbed}
-                  title={project.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
+              {/* Video embed or placeholder */}
+              {project.youtubeEmbed ? (
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    src={project.youtubeEmbed}
+                    title={project.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              ) : (
+                <div className="w-full flex items-center justify-center bg-[#0A0A0A] border-b border-[#1F1F1F]" style={{ height: "160px" }}>
+                  <div className="text-center">
+                    <div className="w-10 h-10 rounded-full border border-[#00D4FF]/30 flex items-center justify-center mx-auto mb-2">
+                      <div className="w-2 h-2 rounded-full bg-[#00D4FF]" />
+                    </div>
+                    <p className="text-xs text-[#888888] uppercase tracking-widest">Client Project</p>
+                  </div>
+                </div>
+              )}
 
               {/* Card content */}
               <div className="flex flex-col flex-1 p-6">
+                {project.role && (
+                  <p className="text-xs text-[#00D4FF] uppercase tracking-widest mb-2 font-medium">{project.role}</p>
+                )}
                 <h3 className="text-lg font-semibold text-white mb-3 leading-snug">
                   {project.title}
                 </h3>
