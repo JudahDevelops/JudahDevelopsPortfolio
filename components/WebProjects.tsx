@@ -3,6 +3,22 @@
 import { motion } from "framer-motion";
 import ProjectCard, { type Project } from "./ProjectCard";
 
+const GraduationCapIcon = (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
+    <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+  </svg>
+);
+
+const BarChartIcon = (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <rect x="3" y="12" width="4" height="9" rx="1" />
+    <rect x="10" y="7" width="4" height="14" rx="1" />
+    <rect x="17" y="3" width="4" height="18" rx="1" />
+    <line x1="2" y1="21" x2="22" y2="21" />
+  </svg>
+);
+
 const projects: Project[] = [
   {
     title: "Academic Planner",
@@ -10,13 +26,15 @@ const projects: Project[] = [
       "Smart assignment tracker and academic calendar built for students to manage deadlines, workload, and schedules. Full React/TypeScript app with persistent state and a clean, usable UI.",
     stack: ["React", "TypeScript", "HTML/CSS"],
     github: "https://github.com/JudahDevelops/academic-planner",
+    placeholderIcon: GraduationCapIcon,
   },
   {
     title: "Data Visualizations",
     description:
-      "A suite of interactive data viz projects — choropleth map, heat map, scatterplot graph, and GDP bar chart — each built to freeCodeCamp's full D3 specification with correct axes, tooltips, and responsive layout.",
+      "A suite of interactive data viz projects — choropleth map, heat map, scatterplot graph, and GDP bar chart — each built to D3 specification with correct axes, tooltips, and responsive layout.",
     stack: ["D3.js", "JavaScript", "SVG", "HTML/CSS"],
     github: "https://github.com/JudahDevelops/chloropleth-map",
+    placeholderIcon: BarChartIcon,
   },
 ];
 

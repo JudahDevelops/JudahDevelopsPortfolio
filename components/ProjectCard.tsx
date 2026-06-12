@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 function GitHubIcon({ size = 15 }: { size?: number }) {
   return (
@@ -16,6 +17,10 @@ export interface Project {
   description: string;
   stack: string[];
   youtubeEmbed?: string | null;
+  /** External image URL shown as card header */
+  image?: string | null;
+  /** SVG element shown as fallback placeholder icon */
+  placeholderIcon?: React.ReactNode;
   github?: string | null;
   liveUrl?: string | null;
 }
@@ -25,6 +30,53 @@ export const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
 
+function CardHeader({ project }: { project: Project }) {
+  if (project.youtubeEmbed) {
+    return (
+      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        <iframe
+          src={project.youtubeEmbed}
+          title={project.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+          className="absolute inset-0 w-full h-full"
+        />
+      </div>
+    );
+  }
+
+  if (project.image) {
+    return (
+      <div className="relative w-full bg-[#0A0A0A] border-b border-[#1F1F1F]" style={{ height: "160px" }}>
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-contain p-8"
+          unoptimized
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="w-full flex items-center justify-center bg-[#0A0A0A] border-b border-[#1F1F1F]"
+      style={{ height: "160px" }}
+    >
+      <div className="flex flex-col items-center gap-3 text-[#444444]">
+        {project.placeholderIcon ?? (
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M3 9h18M9 21V9" />
+          </svg>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div
@@ -33,35 +85,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden hover:border-[#00D4FF]/30 transition-colors duration-300"
     >
-      {/* Video embed or placeholder */}
-      {project.youtubeEmbed ? (
-        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-          <iframe
-            src={project.youtubeEmbed}
-            title={project.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            className="absolute inset-0 w-full h-full"
-          />
-        </div>
-      ) : (
-        <div
-          className="w-full flex items-center justify-center bg-[#0A0A0A] border-b border-[#1F1F1F]"
-          style={{ height: "160px" }}
-        >
-          <div className="text-center">
-            <div className="w-10 h-10 rounded-full border border-[#00D4FF]/30 flex items-center justify-center mx-auto mb-2">
-              <div className="w-2 h-2 rounded-full bg-[#00D4FF]" />
-            </div>
-            <p className="text-xs text-[#888888] uppercase tracking-widest">
-              Client Project
-            </p>
-          </div>
-        </div>
-      )}
+      <CardHeader project={project} />
 
-      {/* Card content */}
       <div className="flex flex-col flex-1 p-6">
         <h3 className="text-lg font-semibold text-white mb-3 leading-snug">
           {project.title}
@@ -70,7 +95,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </p>
 
-        {/* Stack tags */}
         <div className="flex flex-wrap gap-2 mb-5">
           {project.stack.map((tag) => (
             <span
@@ -82,7 +106,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        {/* Buttons */}
         <div className="flex flex-wrap gap-3">
           {project.github && (
             <a
@@ -103,7 +126,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:border-[#00D4FF] hover:text-[#00D4FF] transition-colors duration-200"
             >
-              Live
+              Live Site
               <ExternalLink size={12} className="opacity-60" />
             </a>
           )}
