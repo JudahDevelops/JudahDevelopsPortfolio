@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { useRef } from "react";
 
 function GitHubIcon({ size = 15 }: { size?: number }) {
   return (
@@ -17,9 +18,7 @@ export interface Project {
   description: string;
   stack: string[];
   youtubeEmbed?: string | null;
-  /** External image URL shown as card header */
   image?: string | null;
-  /** SVG element shown as fallback placeholder icon */
   placeholderIcon?: React.ReactNode;
   github?: string | null;
   liveUrl?: string | null;
@@ -48,14 +47,16 @@ function CardHeader({ project }: { project: Project }) {
 
   if (project.image) {
     return (
-      <div className="relative w-full bg-[#0A0A0A] border-b border-[#1F1F1F]" style={{ height: "160px" }}>
+      <div className="relative w-full border-b border-[#1F1F1F] overflow-hidden" style={{ height: "180px" }}>
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-contain p-8"
+          className="object-cover"
           unoptimized
         />
+        {/* Subtle dark overlay so content below stays readable */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#111111]/60" />
       </div>
     );
   }
@@ -78,13 +79,27 @@ function CardHeader({ project }: { project: Project }) {
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    cardRef.current!.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+    cardRef.current!.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+  };
+
   return (
     <motion.div
+      ref={cardRef}
       variants={cardVariants}
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="gradient-border flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden transition-colors duration-300"
+      onPointerMove={handlePointerMove}
+      className="glow-card gradient-border flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden transition-colors duration-300"
     >
+      {/* Pointer-tracking glow blob */}
+      <div className="glow-blob" aria-hidden="true" />
+
       <CardHeader project={project} />
 
       <div className="flex flex-col flex-1 p-6">

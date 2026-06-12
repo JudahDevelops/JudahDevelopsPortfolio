@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cannon Insights - Transformative coaching and development services to help individuals and organizations break barriers and achieve their full potential.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#e73438">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cannoninsights.com/">
+    <meta property="og:title" content="Cannon Insights - Transformative Coaching & Development">
+    <meta property="og:description" content="Break through barriers and achieve your full potential with Cannon Insights' expert coaching and development services.">
+    <meta property="og:image" content="https://cannoninsights.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cannoninsights.com/">
+    <meta property="twitter:title" content="Cannon Insights - Transformative Coaching & Development">
+    <meta property="twitter:description" content="Break through barriers and achieve your full potential with Cannon Insights' expert coaching and development services.">
+    <meta property="twitter:image" content="https://cannoninsights.com/og-image.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Cannon Insights - Transformative Coaching & Development</title>
+    <script type="module" crossorigin src="/assets/index-oZTODJwx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-JzLmaoGS.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

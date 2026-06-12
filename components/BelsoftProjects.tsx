@@ -3,16 +3,7 @@
 import { motion } from "framer-motion";
 import ProjectCard, { type Project } from "./ProjectCard";
 
-const BELSOFT_LOGO = "https://media.licdn.com/dms/image/v2/D4D0BAQGupjLNeB_O-g/company-logo_200_200/company-logo_200_200/0/1728627894197/belsoft_systems_ltd_abuja_logo?e=2147483647&v=beta&t=HHzpxQfKkmiiOgehFi_abhk0KENzzq7YzGMbO-QovWg";
-
-// Shopping cart SVG for e-commerce placeholder fallback
-const ShoppingCartIcon = (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-    <line x1="3" y1="6" x2="21" y2="6" />
-    <path d="M16 10a4 4 0 0 1-8 0" />
-  </svg>
-);
+const BELSOFT_LOGO = "/belsoft-logo.jpg";
 
 // Church/building SVG for TFC fallback
 const ChurchIcon = (
@@ -23,15 +14,6 @@ const ChurchIcon = (
   </svg>
 );
 
-// Microphone SVG for coaching/personal brand site
-const MicIcon = (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-    <rect x="9" y="2" width="6" height="11" rx="3" />
-    <path d="M5 10a7 7 0 0 0 14 0" />
-    <line x1="12" y1="17" x2="12" y2="22" />
-    <line x1="8" y1="22" x2="16" y2="22" />
-  </svg>
-);
 
 const projects: Project[] = [
   {
@@ -40,7 +22,7 @@ const projects: Project[] = [
       "Full shopping site for a Nigerian fashion brand selling contemporary African clothing and textiles. Built with Next.js and Sanity CMS, integrated payment processing, SEO optimisation, Instagram integration, and a clean minimal UI with currency toggling (NGN/USD).",
     stack: ["Next.js", "Sanity.io", "Tailwind CSS", "TypeScript", "SEO"],
     liveUrl: "https://www.florecersplace.com/",
-    placeholderIcon: ShoppingCartIcon,
+    image: "https://www.florecersplace.com/images/hero-1.jpg",
   },
   {
     title: "Cannon Thoughts With IB — Personal Brand Site",
@@ -48,7 +30,7 @@ const projects: Project[] = [
       "Multi-page personal brand and coaching site for a Nigerian leadership development consultant. Features an impact statistics section, testimonials carousel, programs listing, articles, and a contact form via EmailJS. Built with React, Sanity CMS for content management, and Framer Motion animations.",
     stack: ["React", "Sanity.io", "Tailwind CSS", "Framer Motion", "EmailJS"],
     liveUrl: "https://www.cannonthoughtswithib.com/",
-    placeholderIcon: MicIcon,
+    image: "/cannon-hero.jpg",
   },
   {
     title: "The Father\u2019s Church — Website",

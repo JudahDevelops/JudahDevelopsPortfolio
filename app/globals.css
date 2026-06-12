@@ -34,8 +34,6 @@ body {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  /* Dark base so blobs glow against it */
-  background: #0A0A0A;
 }
 
 /* Shared blob base */
@@ -57,7 +55,7 @@ body {
   background: radial-gradient(circle, rgba(0,212,255,0.55) 0%, transparent 70%);
   animation:
     blob1-move   19s ease-in-out infinite,
-    blob1-pulse  11s ease-in-out infinite;
+    blob1-pulse   5s ease-in-out infinite;
 }
 
 /* 2 — Violet · center · large, breathes slowly */
@@ -70,7 +68,7 @@ body {
   background: radial-gradient(circle, rgba(123,47,255,0.45) 0%, transparent 65%);
   animation:
     blob2-move   23s ease-in-out infinite,
-    blob2-pulse  17s ease-in-out infinite;
+    blob2-pulse   7s ease-in-out infinite;
 }
 
 /* 3 — Magenta · bottom-right · rises and sinks */
@@ -82,7 +80,7 @@ body {
   background: radial-gradient(circle, rgba(224,64,251,0.50) 0%, transparent 70%);
   animation:
     blob3-move   29s ease-in-out infinite,
-    blob3-pulse  13s ease-in-out infinite;
+    blob3-pulse   6s ease-in-out infinite;
 }
 
 /* 4 — Blue-purple · upper-right · wanders diagonally */
@@ -94,7 +92,7 @@ body {
   background: radial-gradient(circle, rgba(80,100,255,0.40) 0%, transparent 68%);
   animation:
     blob4-move   37s ease-in-out infinite,
-    blob4-pulse  21s ease-in-out infinite;
+    blob4-pulse   8s ease-in-out infinite;
 }
 
 /* 5 — Deep magenta · lower-left · slow creep */
@@ -106,7 +104,7 @@ body {
   background: radial-gradient(circle, rgba(200,40,220,0.38) 0%, transparent 70%);
   animation:
     blob5-move   31s ease-in-out infinite,
-    blob5-pulse  15s ease-in-out infinite;
+    blob5-pulse   9s ease-in-out infinite;
 }
 
 /* ── Movement keyframes (independent prime durations = never sync) ───────── */
@@ -172,6 +170,46 @@ body {
 main {
   position: relative;
   z-index: 1;
+}
+
+/* ── Card / element hover glow (pointer-tracking aurora pulse) ──────────── */
+
+/* The glow blob that follows the cursor — positioned via --mouse-x/y */
+.glow-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow-card .glow-blob {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.45)   0%,
+    rgba(123, 47, 255, 0.30)  45%,
+    transparent               70%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transform: translate(
+    calc(var(--mouse-x, 50%) - 170px),
+    calc(var(--mouse-y, 50%) - 170px)
+  );
+  transition: opacity 0.4s ease;
+}
+
+.glow-card:hover .glow-blob {
+  opacity: 1;
+  animation: glow-breathe 2.2s ease-in-out infinite;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { transform: translate(calc(var(--mouse-x, 50%) - 170px), calc(var(--mouse-y, 50%) - 170px)) scale(1);    }
+  50%       { transform: translate(calc(var(--mouse-x, 50%) - 170px), calc(var(--mouse-y, 50%) - 170px)) scale(1.18); }
 }
 
 /* ── Gradient text ──────────────────────────────────────────────────────── */
