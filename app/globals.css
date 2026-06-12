@@ -17,14 +17,164 @@ body {
   padding: 0;
 }
 
-/* ── Gradient palette ─────────────────────────────────────────────────────── */
+/* ── Gradient palette ───────────────────────────────────────────────────── */
 :root {
-  --grad: linear-gradient(135deg, #00D4FF 0%, #7B2FFF 50%, #E040FB 100%);
-  --grad-text: linear-gradient(90deg, #00D4FF 0%, #7B2FFF 55%, #E040FB 100%);
-  --grad-border: linear-gradient(135deg, #00D4FF, #7B2FFF, #E040FB);
+  --c-blue:    #00D4FF;
+  --c-purple:  #7B2FFF;
+  --c-magenta: #E040FB;
+  --grad:      linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 50%, var(--c-magenta) 100%);
+  --grad-text: linear-gradient(90deg,  var(--c-blue) 0%, var(--c-purple) 55%, var(--c-magenta) 100%);
+  --grad-border: linear-gradient(135deg, var(--c-blue), var(--c-purple), var(--c-magenta));
 }
 
-/* Gradient text */
+/* ── Aurora layer (fixed, full-page, behind everything) ─────────────────── */
+.aurora-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* Dark base so blobs glow against it */
+  background: #0A0A0A;
+}
+
+/* Shared blob base */
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform, opacity;
+}
+
+/* ── Blob definitions ───────────────────────────────────────────────────── */
+
+/* 1 — Cyan · top-left · drifts slowly right and down */
+.aurora-blob-1 {
+  width: 680px;
+  height: 680px;
+  top: -180px;
+  left: -160px;
+  background: radial-gradient(circle, rgba(0,212,255,0.55) 0%, transparent 70%);
+  animation:
+    blob1-move   19s ease-in-out infinite,
+    blob1-pulse  11s ease-in-out infinite;
+}
+
+/* 2 — Violet · center · large, breathes slowly */
+.aurora-blob-2 {
+  width: 900px;
+  height: 900px;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(123,47,255,0.45) 0%, transparent 65%);
+  animation:
+    blob2-move   23s ease-in-out infinite,
+    blob2-pulse  17s ease-in-out infinite;
+}
+
+/* 3 — Magenta · bottom-right · rises and sinks */
+.aurora-blob-3 {
+  width: 600px;
+  height: 600px;
+  bottom: -100px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(224,64,251,0.50) 0%, transparent 70%);
+  animation:
+    blob3-move   29s ease-in-out infinite,
+    blob3-pulse  13s ease-in-out infinite;
+}
+
+/* 4 — Blue-purple · upper-right · wanders diagonally */
+.aurora-blob-4 {
+  width: 500px;
+  height: 500px;
+  top: 5vh;
+  right: -80px;
+  background: radial-gradient(circle, rgba(80,100,255,0.40) 0%, transparent 68%);
+  animation:
+    blob4-move   37s ease-in-out infinite,
+    blob4-pulse  21s ease-in-out infinite;
+}
+
+/* 5 — Deep magenta · lower-left · slow creep */
+.aurora-blob-5 {
+  width: 520px;
+  height: 520px;
+  bottom: 15vh;
+  left: -60px;
+  background: radial-gradient(circle, rgba(200,40,220,0.38) 0%, transparent 70%);
+  animation:
+    blob5-move   31s ease-in-out infinite,
+    blob5-pulse  15s ease-in-out infinite;
+}
+
+/* ── Movement keyframes (independent prime durations = never sync) ───────── */
+
+@keyframes blob1-move {
+  0%   { transform: translate(0px,    0px)   scale(1);    }
+  25%  { transform: translate(60px,   80px)  scale(1.10); }
+  50%  { transform: translate(120px,  30px)  scale(0.92); }
+  75%  { transform: translate(40px,  110px)  scale(1.06); }
+  100% { transform: translate(0px,    0px)   scale(1);    }
+}
+@keyframes blob1-pulse {
+  0%, 100% { opacity: 0.30; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes blob2-move {
+  0%   { transform: translateX(-50%) translate(0px,   0px)  scale(1);    }
+  20%  { transform: translateX(-50%) translate(-80px, 60px) scale(1.08); }
+  50%  { transform: translateX(-50%) translate(60px, -40px) scale(0.94); }
+  80%  { transform: translateX(-50%) translate(-40px, 80px) scale(1.05); }
+  100% { transform: translateX(-50%) translate(0px,   0px)  scale(1);    }
+}
+@keyframes blob2-pulse {
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 0.45; }
+}
+
+@keyframes blob3-move {
+  0%   { transform: translate(0px,    0px)   scale(1);    }
+  33%  { transform: translate(-70px, -90px)  scale(1.12); }
+  66%  { transform: translate(-30px, -140px) scale(0.90); }
+  100% { transform: translate(0px,    0px)   scale(1);    }
+}
+@keyframes blob3-pulse {
+  0%, 100% { opacity: 0.28; }
+  50%       { opacity: 0.52; }
+}
+
+@keyframes blob4-move {
+  0%   { transform: translate(0px,   0px)   scale(1);    }
+  30%  { transform: translate(-90px, 70px)  scale(1.09); }
+  60%  { transform: translate(-50px, 130px) scale(0.93); }
+  100% { transform: translate(0px,   0px)   scale(1);    }
+}
+@keyframes blob4-pulse {
+  0%, 100% { opacity: 0.22; }
+  50%       { opacity: 0.42; }
+}
+
+@keyframes blob5-move {
+  0%   { transform: translate(0px,  0px)   scale(1);    }
+  40%  { transform: translate(80px, -60px) scale(1.07); }
+  70%  { transform: translate(50px, -110px)scale(0.95); }
+  100% { transform: translate(0px,  0px)   scale(1);    }
+}
+@keyframes blob5-pulse {
+  0%, 100% { opacity: 0.20; }
+  50%       { opacity: 0.40; }
+}
+
+/* ── Content must sit above aurora ─────────────────────────────────────── */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Gradient text ──────────────────────────────────────────────────────── */
 .gradient-text {
   background: var(--grad-text);
   -webkit-background-clip: text;
@@ -32,7 +182,15 @@ body {
   background-clip: text;
 }
 
-/* Gradient border via pseudo-element trick */
+/* ── Section label gradient ─────────────────────────────────────────────── */
+.label-gradient {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gradient border hover ──────────────────────────────────────────────── */
 .gradient-border {
   position: relative;
 }
@@ -54,29 +212,6 @@ body {
   opacity: 1;
 }
 
-/* ── Aurora blobs (hero background) ─────────────────────────────────────── */
-@keyframes aurora-1 {
-  0%   { transform: translate(0%, 0%) scale(1); }
-  33%  { transform: translate(4%, -6%) scale(1.08); }
-  66%  { transform: translate(-3%, 4%) scale(0.95); }
-  100% { transform: translate(0%, 0%) scale(1); }
-}
-@keyframes aurora-2 {
-  0%   { transform: translate(0%, 0%) scale(1); }
-  33%  { transform: translate(-5%, 5%) scale(1.05); }
-  66%  { transform: translate(4%, -3%) scale(0.97); }
-  100% { transform: translate(0%, 0%) scale(1); }
-}
-@keyframes aurora-3 {
-  0%   { transform: translate(0%, 0%) scale(1); }
-  50%  { transform: translate(3%, 3%) scale(1.06); }
-  100% { transform: translate(0%, 0%) scale(1); }
-}
-
-.aurora-1 { animation: aurora-1 18s ease-in-out infinite; }
-.aurora-2 { animation: aurora-2 22s ease-in-out infinite; }
-.aurora-3 { animation: aurora-3 26s ease-in-out infinite; }
-
 /* ── Gradient button ────────────────────────────────────────────────────── */
 .btn-gradient {
   background: var(--grad);
@@ -90,26 +225,14 @@ body {
   transform: translateY(-1px);
 }
 
-/* ── Section label gradient ─────────────────────────────────────────────── */
-.label-gradient {
-  background: var(--grad-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* ── Custom scrollbar ───────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #111111;
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00D4FF, #7B2FFF, #E040FB);
+  background: linear-gradient(180deg, var(--c-blue), var(--c-purple), var(--c-magenta));
   border-radius: 3px;
 }
 * {
   scrollbar-width: thin;
-  scrollbar-color: #7B2FFF #111111;
+  scrollbar-color: var(--c-purple) #0A0A0A;
 }

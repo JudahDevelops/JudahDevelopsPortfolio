@@ -9,26 +9,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-
-      {/* ── Aurora background blobs ─────────────────────────────────────── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Blue blob — top left */}
-        <div
-          className="aurora-1 absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-[0.12]"
-          style={{ background: "radial-gradient(circle, #00D4FF 0%, transparent 70%)" }}
-        />
-        {/* Purple blob — center */}
-        <div
-          className="aurora-2 absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-[0.10]"
-          style={{ background: "radial-gradient(circle, #7B2FFF 0%, transparent 65%)" }}
-        />
-        {/* Magenta blob — bottom right */}
-        <div
-          className="aurora-3 absolute -bottom-40 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.09]"
-          style={{ background: "radial-gradient(circle, #E040FB 0%, transparent 70%)" }}
-        />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center">
 
       {/* ── Dot grid ─────────────────────────────────────────────────────── */}
       <div

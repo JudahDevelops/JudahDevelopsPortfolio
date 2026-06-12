@@ -56,7 +56,7 @@ const tagVariants: Variants = {
 
 export default function Skills() {
   return (
-    <section className="py-24 px-6 bg-[#0A0A0A] border-t border-[#1F1F1F]">
+    <section className="py-24 px-6 border-t border-[#1F1F1F]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
