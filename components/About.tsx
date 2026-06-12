@@ -21,13 +21,24 @@ export default function About() {
             <span className="text-white font-medium">
               Nile University of Abuja
             </span>{" "}
-            working across sales automation, AI consulting, web development, and
-            UI/UX design. Since July 2025 I&apos;ve been building production
-            systems at{" "}
-            <span className="text-white font-medium">Belsoft Systems</span> —
-            shipping dashboards, automation pipelines, and CRM workflows that
-            run end to end. I&apos;m 17 and already operating at a professional
-            level across the full stack.
+            building systems at the intersection of AI, automation, and product
+            design.
+          </p>
+          <p className="text-2xl sm:text-3xl text-white/90 leading-relaxed font-light tracking-tight mt-8">
+            Since July 2025, I&apos;ve been working at{" "}
+            <span className="text-white font-medium">Belsoft Systems</span>,
+            developing production-ready dashboards, automation pipelines, and
+            CRM workflows that solve real business problems from end to end.
+          </p>
+          <p className="text-2xl sm:text-3xl text-white/90 leading-relaxed font-light tracking-tight mt-8">
+            My work spans sales automation, AI consulting, full-stack web
+            development, and UI/UX design — combining technical execution with
+            product thinking to build tools that are functional, scalable, and
+            user-focused.
+          </p>
+          <p className="text-xl sm:text-2xl text-white/60 leading-relaxed font-light tracking-tight mt-8">
+            At 17, I&apos;m focused on creating technology that delivers
+            measurable impact, not just prototypes.
           </p>
         </motion.div>
       </div>
