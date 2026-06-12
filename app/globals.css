@@ -172,29 +172,84 @@ main {
   z-index: 1;
 }
 
-/* ── Hero top glow pool (Gemini-style) ──────────────────────────────────── */
-.hero-top-glow {
-  height: 340px;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% -10%,  rgba(0, 212, 255, 0.55)  0%, transparent 65%),
-    radial-gradient(ellipse 60% 50% at 30% -15%,  rgba(123, 47, 255, 0.50) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 45% at 70% -10%,  rgba(224, 64, 251, 0.40) 0%, transparent 60%);
-  animation: top-glow-pulse 5s ease-in-out infinite;
+/* ── Hero glow blobs (Gemini-style top pool) ─────────────────────────────── */
+
+.hero-glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
 }
 
-@keyframes top-glow-pulse {
-  0%, 100% {
-    opacity: 0.75;
-    transform: scaleX(1)    scaleY(1);
-  }
-  33% {
-    opacity: 1;
-    transform: scaleX(1.06) scaleY(1.12);
-  }
-  66% {
-    opacity: 0.85;
-    transform: scaleX(0.96) scaleY(0.94);
-  }
+/* Blob 1 — deep blue, primary, centered, pushed half off the top edge */
+.hero-glow-blue {
+  width: 860px;
+  height: 420px;
+  top: -210px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(29,  78, 216, 0.92) 0%,
+    rgba(37,  99, 235, 0.55) 35%,
+    transparent 70%
+  );
+  filter: blur(88px);
+  animation: glow-breathe-blue 8s ease-in-out infinite alternate;
+}
+
+/* Blob 2 — cyan, offset right */
+.hero-glow-cyan {
+  width: 580px;
+  height: 300px;
+  top: -150px;
+  left: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,  212, 255, 0.82) 0%,
+    rgba(8,  145, 178, 0.45) 38%,
+    transparent 68%
+  );
+  filter: blur(68px);
+  animation: glow-breathe-cyan 11s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+
+/* Blob 3 — violet/magenta, offset left */
+.hero-glow-violet {
+  width: 520px;
+  height: 260px;
+  top: -130px;
+  left: 32%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(123,  47, 255, 0.70) 0%,
+    rgba(224,  64, 251, 0.35) 42%,
+    transparent 70%
+  );
+  filter: blur(78px);
+  animation: glow-breathe-violet 13s ease-in-out infinite alternate;
+  animation-delay: -7s;
+}
+
+@keyframes glow-breathe-blue {
+  0%   { opacity: 0.60; transform: translateX(-50%) scale(1);    }
+  100% { opacity: 1.00; transform: translateX(-50%) scale(1.10); }
+}
+
+@keyframes glow-breathe-cyan {
+  0%   { opacity: 0.45; transform: translateX(-50%) scale(1)    translateY(0px);   }
+  100% { opacity: 0.90; transform: translateX(-50%) scale(1.12) translateY(-16px); }
+}
+
+@keyframes glow-breathe-violet {
+  0%   { opacity: 0.35; transform: translateX(-50%) scale(0.94); }
+  100% { opacity: 0.72; transform: translateX(-50%) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow-blob { animation: none; }
 }
 
 /* ── Card / element hover glow (pointer-tracking aurora pulse) ──────────── */
