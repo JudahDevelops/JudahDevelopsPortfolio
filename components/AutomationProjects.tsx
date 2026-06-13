@@ -8,7 +8,7 @@ const projects: Project[] = [
     title: "AI Lead Enrichment Pipeline",
     description:
       "Reads raw leads from Google Sheets, verifies emails with Hunter.io, generates personalized AI icebreaker lines with DeepSeek, and writes enriched leads to an output sheet. Batched processing with a Slack summary on completion.",
-    stack: ["n8n", "Hunter.io", "DeepSeek", "Google Sheets", "Slack"],
+    stack: ["n8n", "Apollo.io", "Hunter.io", "DeepSeek", "Google Sheets", "Slack"],
     youtubeEmbed: "https://www.youtube.com/embed/UClQIUK7IYc",
     github: "https://github.com/JudahDevelops/n8n-ai-lead-enrichment-pipeline",
   },
@@ -16,7 +16,7 @@ const projects: Project[] = [
     title: "Sheet → HubSpot + Instantly Campaign Launcher",
     description:
       "Reads enriched leads from Google Sheets, creates/updates HubSpot contacts, enrolls each lead in an Instantly.ai campaign with AI-personalized copy, marks enrolled leads in the sheet, and posts a Slack summary.",
-    stack: ["n8n", "Google Sheets", "HubSpot", "Instantly.ai", "DeepSeek", "Slack"],
+    stack: ["n8n", "Apollo.io", "Google Sheets", "HubSpot", "Instantly.ai", "DeepSeek", "Slack"],
     youtubeEmbed: "https://www.youtube.com/embed/UhG0-olnHBM",
     github: "https://github.com/JudahDevelops/n8n-sheet-to-hubspot-instantly",
   },
