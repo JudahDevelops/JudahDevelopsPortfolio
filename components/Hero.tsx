@@ -56,7 +56,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          n8n · HubSpot · Instantly.ai · React · UI/UX
+          n8n · HubSpot · Apollo.io · Instantly.ai · React · UI/UX
         </motion.p>
 
         <motion.div

@@ -10,7 +10,7 @@ interface SkillGroup {
 const skillGroups: SkillGroup[] = [
   {
     category: "Automation Tools",
-    skills: ["n8n", "HubSpot", "Instantly.ai", "Hunter.io"],
+    skills: ["n8n", "HubSpot", "Apollo.io", "Instantly.ai", "Hunter.io"],
   },
   {
     category: "Development",
