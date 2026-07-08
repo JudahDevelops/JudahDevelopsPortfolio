@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import ProjectCard, { type Project } from "./ProjectCard";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 const GraduationCapIcon = (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
     <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
@@ -45,22 +47,22 @@ const containerVariants = {
 
 export default function WebProjects() {
   return (
-    <section id="web" className="py-36 px-6 scroll-mt-20">
+    <section id="web" className="py-32 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5, ease }}
           className="mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium text-[#22C55E]">
             Web Development
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight">
             Apps & Interfaces
           </h2>
-          <p className="text-[#888888] mt-4 text-lg max-w-2xl">
+          <p className="text-[#94A3B8] mt-4 text-lg max-w-2xl">
             React applications, TypeScript projects, and data visualizations
             built to production standards.
           </p>

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { Copy, Check } from "lucide-react";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -34,16 +36,16 @@ function CopyChip({ label, value }: { label: string; value: string }) {
       ref={ref}
       onClick={handleCopy}
       onPointerMove={handlePointerMove}
-      className="glow-card gradient-border group flex items-center gap-3 px-5 py-3.5 bg-[#111111] border border-[#1F1F1F] rounded-lg text-left transition-colors duration-200 cursor-pointer w-full sm:w-auto"
+      className="glass-card accent-border-hover group flex items-center gap-3 px-5 py-3.5 text-left cursor-pointer w-full sm:w-auto"
     >
-      <div className="glow-blob" aria-hidden="true" />
+      <div className="card-glow" aria-hidden="true" />
       <div className="flex flex-col min-w-0">
-        <span className="text-[10px] uppercase tracking-widest text-[#888888] mb-0.5">{label}</span>
-        <span className="text-white text-sm font-medium truncate">{value}</span>
+        <span className="text-[10px] uppercase tracking-widest text-[#64748B] mb-0.5">{label}</span>
+        <span className="text-[#F8FAFC] text-sm font-medium truncate">{value}</span>
       </div>
-      <span className="ml-auto pl-3 shrink-0 text-[#888888] group-hover:text-[#00D4FF] transition-colors duration-200">
+      <span className="ml-auto pl-3 shrink-0 text-[#64748B] group-hover:text-[#22C55E] transition-colors duration-200">
         {copied
-          ? <Check size={14} className="text-[#00D4FF]" />
+          ? <Check size={14} className="text-[#22C55E]" />
           : <Copy size={14} />
         }
       </span>
@@ -53,49 +55,47 @@ function CopyChip({ label, value }: { label: string; value: string }) {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-36 px-6 scroll-mt-20">
+    <section id="contact" className="py-32 px-6 scroll-mt-20">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5, ease }}
         >
-          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium text-[#22C55E]">
             Contact
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 gradient-text">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 text-[#F8FAFC]">
             Let&apos;s Work Together
           </h2>
-          <p className="text-[#888888] text-lg mb-10 max-w-xl">
+          <p className="text-[#94A3B8] text-lg mb-10 max-w-xl">
             Open to contracts, freelance projects, and collaborations across
             automation, web development, AI consulting, and UI/UX design.
           </p>
 
-          {/* Copyable contact chips */}
           <motion.div
             className="flex flex-col sm:flex-row gap-3 mb-8"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ delay: 0.1, duration: 0.5, ease }}
           >
             <CopyChip label="Email" value="judahdevelops@gmail.com" />
             <CopyChip label="WhatsApp / Phone" value="+234 903 583 7363" />
           </motion.div>
 
-          {/* GitHub link */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ delay: 0.2, duration: 0.5, ease }}
           >
             <a
               href="https://github.com/JudahDevelops"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-border inline-flex items-center gap-3 px-7 py-3.5 border border-[#1F1F1F] text-white font-semibold rounded text-sm uppercase tracking-wider transition-colors duration-200"
+              className="accent-border-hover inline-flex items-center gap-3 px-7 py-3.5 border border-[#334155] text-[#F8FAFC] font-semibold rounded-lg text-sm uppercase tracking-wider transition-colors duration-200 hover:bg-[#334155]/30 cursor-pointer"
             >
               <GitHubIcon size={16} />
               GitHub
@@ -106,16 +106,16 @@ export default function Contact() {
 
       {/* Footer */}
       <motion.div
-        className="max-w-6xl mx-auto mt-24 pt-10 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-4"
+        className="max-w-6xl mx-auto mt-24 pt-10 border-t border-[#334155]/50 flex flex-col sm:flex-row justify-between items-center gap-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.4 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
       >
-        <p className="text-[#888888] text-sm">
+        <p className="text-[#64748B] text-sm">
           Judah Oka &mdash; CS Student, Nile University of Abuja
         </p>
-        <p className="text-[#888888] text-xs">
+        <p className="text-[#475569] text-xs">
           Built with Next.js · Tailwind CSS · Framer Motion
         </p>
       </motion.div>

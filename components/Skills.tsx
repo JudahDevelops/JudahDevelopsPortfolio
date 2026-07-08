@@ -2,6 +2,8 @@
 
 import { motion, type Variants } from "framer-motion";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 interface SkillGroup {
   category: string;
   skills: string[];
@@ -14,14 +16,7 @@ const skillGroups: SkillGroup[] = [
   },
   {
     category: "Development",
-    skills: [
-      "React.js",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Python",
-      "HTML / CSS",
-    ],
+    skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "Python", "HTML / CSS"],
   },
   {
     category: "AI & Consulting",
@@ -35,40 +30,34 @@ const skillGroups: SkillGroup[] = [
 
 const containerVariants: Variants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 const groupVariants: Variants = {
   hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
 };
 
 const tagVariants: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.3 },
-  },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
 };
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-36 px-6 scroll-mt-20">
+    <section id="skills" className="py-32 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5, ease }}
           className="mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium text-[#22C55E]">
             Skills
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight">
             Tools & Stack
           </h2>
         </motion.div>
@@ -82,10 +71,10 @@ export default function Skills() {
         >
           {skillGroups.map((group) => (
             <motion.div key={group.category} variants={groupVariants}>
-              <h3 className="text-xs uppercase tracking-[0.2em] text-[#888888] font-medium">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-[#94A3B8] font-medium">
                 {group.category}
               </h3>
-              <div className="h-px w-8 bg-gradient-to-r from-[#00D4FF] to-transparent mt-2 mb-5" />
+              <div className="h-px w-8 bg-gradient-to-r from-[#22C55E] to-transparent mt-2 mb-5" />
               <motion.div
                 className="flex flex-wrap gap-2.5"
                 variants={containerVariants}
@@ -97,7 +86,7 @@ export default function Skills() {
                   <motion.span
                     key={skill}
                     variants={tagVariants}
-                    className="px-3.5 py-2 text-sm font-medium bg-[#111111] border border-[#1F1F1F] text-white rounded hover:bg-[#1A1A1A] hover:border-[#2A2A2A] transition-all duration-200 cursor-default"
+                    className="skill-tag px-3.5 py-2 text-sm font-medium cursor-default"
                   >
                     {skill}
                   </motion.span>

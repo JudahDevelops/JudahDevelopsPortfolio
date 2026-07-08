@@ -20,10 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased scroll-smooth`}>
-      <body
-        className="min-h-full text-white font-sans"
-        style={{ fontFamily: "var(--font-inter), sans-serif" }}
-      >
+      <body className="min-h-full bg-bg text-text font-sans">
+        <div className="noise-overlay" aria-hidden="true" />
         {children}
       </body>
     </html>

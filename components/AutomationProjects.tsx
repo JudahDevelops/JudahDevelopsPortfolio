@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import ProjectCard, { type Project } from "./ProjectCard";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 const projects: Project[] = [
   {
     title: "AI Lead Enrichment Pipeline",
@@ -13,7 +15,7 @@ const projects: Project[] = [
     github: "https://github.com/JudahDevelops/n8n-ai-lead-enrichment-pipeline",
   },
   {
-    title: "Sheet → HubSpot + Instantly Campaign Launcher",
+    title: "Sheet \u2192 HubSpot + Instantly Campaign Launcher",
     description:
       "Reads enriched leads from Google Sheets, creates/updates HubSpot contacts, enrolls each lead in an Instantly.ai campaign with AI-personalized copy, marks enrolled leads in the sheet, and posts a Slack summary.",
     stack: ["n8n", "Apollo.io", "Google Sheets", "HubSpot", "Instantly.ai", "DeepSeek", "Slack"],
@@ -37,22 +39,22 @@ const containerVariants = {
 
 export default function AutomationProjects() {
   return (
-    <section id="automation" className="py-36 px-6 scroll-mt-20">
+    <section id="automation" className="py-32 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5, ease }}
           className="mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium text-[#22C55E]">
             Automation
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight">
             n8n Pipelines
           </h2>
-          <p className="text-[#888888] mt-4 text-lg max-w-2xl">
+          <p className="text-[#94A3B8] mt-4 text-lg max-w-2xl">
             Production workflows covering the full outbound stack — lead enrichment,
             CRM sync, campaign launch, and AI-powered reply routing.
           </p>

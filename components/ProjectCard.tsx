@@ -26,10 +26,10 @@ export interface Project {
 
 export const cardVariants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
-function CardHeader({ project }: { project: Project }) {
+function CardMedia({ project }: { project: Project }) {
   if (project.youtubeEmbed) {
     return (
       <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
@@ -39,7 +39,7 @@ function CardHeader({ project }: { project: Project }) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           loading="lazy"
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full rounded-t-2xl"
         />
       </div>
     );
@@ -47,7 +47,7 @@ function CardHeader({ project }: { project: Project }) {
 
   if (project.image) {
     return (
-      <div className="relative w-full border-b border-[#1F1F1F] overflow-hidden" style={{ height: "180px" }}>
+      <div className="relative w-full border-b border-[#334155]/50 overflow-hidden" style={{ height: "180px" }}>
         <Image
           src={project.image}
           alt={project.title}
@@ -55,18 +55,17 @@ function CardHeader({ project }: { project: Project }) {
           className="object-cover"
           unoptimized
         />
-        {/* Subtle dark overlay so content below stays readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#111111]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0F172A]/60" />
       </div>
     );
   }
 
   return (
     <div
-      className="w-full flex items-center justify-center bg-[#0A0A0A] border-b border-[#1F1F1F]"
+      className="w-full flex items-center justify-center bg-[#0F172A]/60 border-b border-[#334155]/50"
       style={{ height: "160px" }}
     >
-      <div className="flex flex-col items-center gap-3 text-[#444444]">
+      <div className="flex flex-col items-center gap-3 text-[#64748B]">
         {project.placeholderIcon ?? (
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
             <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -93,29 +92,25 @@ export default function ProjectCard({ project }: { project: Project }) {
       ref={cardRef}
       variants={cardVariants}
       whileHover={{ y: -4, scale: 1.01 }}
-      transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
       onPointerMove={handlePointerMove}
-      className="glow-card gradient-border flex flex-col bg-[#111111]/60 backdrop-blur-sm border border-[#1F1F1F] hover:border-[#2A2A2A] rounded-md overflow-hidden transition-colors duration-300"
+      className="glass-card flex flex-col overflow-hidden"
     >
-      {/* Pointer-tracking glow blob */}
-      <div className="glow-blob" aria-hidden="true" />
+      <div className="card-glow" aria-hidden="true" />
 
-      <CardHeader project={project} />
+      <CardMedia project={project} />
 
       <div className="flex flex-col flex-1 p-6">
-        <h3 className="text-lg font-semibold text-white mb-3 leading-snug">
+        <h3 className="text-lg font-semibold text-[#F8FAFC] mb-3 leading-snug">
           {project.title}
         </h3>
-        <p className="text-[#888888] text-sm leading-relaxed mb-5 flex-1">
+        <p className="text-[#94A3B8] text-sm leading-relaxed mb-5 flex-1">
           {project.description}
         </p>
 
         <div className="flex flex-wrap gap-2 mb-5">
           {project.stack.map((tag) => (
-            <span
-              key={tag}
-              className="px-2.5 py-1 text-xs font-medium bg-[#0A0A0A] border border-[#1F1F1F] text-[#888888] rounded hover:border-[#2A2A2A] hover:text-white/70 transition-colors duration-200"
-            >
+            <span key={tag} className="skill-tag px-2.5 py-1 text-xs font-medium">
               {tag}
             </span>
           ))}
@@ -127,7 +122,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:bg-white/[0.03] transition-colors duration-200"
+              className="accent-border-hover inline-flex items-center gap-2 px-4 py-2.5 border border-[#334155] text-[#F8FAFC] text-sm font-medium rounded-lg hover:bg-[#334155]/30 transition-colors duration-200 cursor-pointer"
             >
               <GitHubIcon size={15} />
               GitHub
@@ -139,7 +134,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:bg-white/[0.03] transition-colors duration-200"
+              className="accent-border-hover inline-flex items-center gap-2 px-4 py-2.5 border border-[#334155] text-[#F8FAFC] text-sm font-medium rounded-lg hover:bg-[#334155]/30 transition-colors duration-200 cursor-pointer"
             >
               Live Site
               <ExternalLink size={12} className="opacity-60" />

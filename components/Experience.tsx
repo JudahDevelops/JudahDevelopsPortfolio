@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 interface Role {
   company: string;
   title: string;
@@ -39,33 +41,30 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease }}
     >
       <div
         ref={cardRef}
         onPointerMove={handlePointerMove}
-        className="glow-card gradient-border bg-[#111111]/80 backdrop-blur-sm border border-[#1F1F1F] rounded-2xl p-8 max-w-3xl"
+        className="glass-card p-8 max-w-3xl"
       >
-        <div className="glow-blob" aria-hidden="true" />
+        <div className="card-glow" aria-hidden="true" />
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-5">
           <div>
-            <h3 className="text-xl font-bold text-white">{role.company}</h3>
-            <p className="font-medium mt-0.5 label-gradient">{role.title}</p>
+            <h3 className="text-xl font-bold text-[#F8FAFC]">{role.company}</h3>
+            <p className="font-medium mt-0.5 text-[#22C55E]">{role.title}</p>
           </div>
           <div className="text-right shrink-0">
-            <p className="text-sm text-white/80 font-medium">{role.period}</p>
-            <p className="text-xs text-[#888888] mt-0.5">{role.type}</p>
+            <p className="text-sm text-[#CBD5E1] font-medium">{role.period}</p>
+            <p className="text-xs text-[#64748B] mt-0.5">{role.type}</p>
           </div>
         </div>
-        <p className="text-[#888888] text-sm leading-relaxed mb-5">
+        <p className="text-[#94A3B8] text-sm leading-relaxed mb-5">
           {role.description}
         </p>
         <div className="flex flex-wrap gap-2">
           {role.skills.map((skill) => (
-            <span
-              key={skill}
-              className="px-2.5 py-1 text-xs font-medium bg-[#0A0A0A] border border-[#1F1F1F] text-[#888888] rounded"
-            >
+            <span key={skill} className="skill-tag px-2.5 py-1 text-xs font-medium">
               {skill}
             </span>
           ))}
@@ -77,20 +76,19 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-36 px-6 scroll-mt-20">
+    <section id="experience" className="py-32 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
-
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5, ease }}
           className="mb-14"
         >
-          <p className="text-xs uppercase tracking-[0.2em] mb-3 font-medium label-gradient">
+          <p className="text-xs uppercase tracking-[0.2em] mb-3 font-medium text-[#22C55E]">
             Experience
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight">
             Work History
           </h2>
         </motion.div>

@@ -12,6 +12,7 @@ const links = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -24,37 +25,69 @@ export default function Navbar() {
     <motion.nav
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.9, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ delay: 0.8, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0A0A]/80 backdrop-blur-lg border-b border-white/[0.06]"
+          ? "bg-[#0F172A]/80 backdrop-blur-xl border-b border-[#334155]/40"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="text-sm font-semibold tracking-tight text-white hover:text-white/80 transition-colors duration-200"
+          className="text-[#F8FAFC] font-semibold text-sm tracking-tight hover:text-[#22C55E] transition-colors duration-200 cursor-pointer"
         >
           Judah Oka
         </a>
 
-        <div className="flex items-center gap-8">
+        {/* Desktop links */}
+        <div className="hidden sm:flex items-center gap-8">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[#888888] hover:text-white transition-colors duration-200"
+              className="text-[#94A3B8] text-sm font-medium hover:text-[#F8FAFC] transition-colors duration-200"
             >
               {link.label}
             </a>
           ))}
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="sm:hidden flex flex-col gap-1.5 cursor-pointer p-2"
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-5 h-0.5 bg-[#94A3B8] transition-all duration-200 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-[#94A3B8] transition-all duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-[#94A3B8] transition-all duration-200 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="sm:hidden bg-[#0F172A]/95 backdrop-blur-xl border-b border-[#334155]/40 px-6 pb-4"
+        >
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="block py-3 text-[#94A3B8] text-sm font-medium hover:text-[#F8FAFC] transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))}
+        </motion.div>
+      )}
     </motion.nav>
   );
 }

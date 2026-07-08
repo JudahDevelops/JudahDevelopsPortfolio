@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -7,7 +8,6 @@ import BelsoftProjects from "@/components/BelsoftProjects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import PageGlow from "@/components/PageGlow";
-import Navbar from "@/components/Navbar";
 import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
