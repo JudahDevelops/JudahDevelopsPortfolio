@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} h-full antialiased scroll-smooth`}>
       <body
         className="min-h-full text-white font-sans"
         style={{ fontFamily: "var(--font-inter), sans-serif" }}

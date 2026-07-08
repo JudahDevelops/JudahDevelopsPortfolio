@@ -40,18 +40,18 @@ const projects: Project[] = [
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 export default function WebProjects() {
   return (
-    <section id="web" className="py-32 px-6">
+    <section id="web" className="py-36 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-16"
         >
           <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">

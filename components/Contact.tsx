@@ -53,18 +53,18 @@ function CopyChip({ label, value }: { label: string; value: string }) {
 
 export default function Contact() {
   return (
-    <section className="py-32 px-6">
+    <section id="contact" className="py-36 px-6 scroll-mt-20">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
             Contact
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 gradient-text">
             Let&apos;s Work Together
           </h2>
           <p className="text-[#888888] text-lg mb-10 max-w-xl">
@@ -78,7 +78,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.5 }}
+            transition={{ delay: 0.1, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <CopyChip label="Email" value="judahdevelops@gmail.com" />
             <CopyChip label="WhatsApp / Phone" value="+234 903 583 7363" />
@@ -89,7 +89,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.25, duration: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <a
               href="https://github.com/JudahDevelops"
@@ -106,11 +106,11 @@ export default function Contact() {
 
       {/* Footer */}
       <motion.div
-        className="max-w-6xl mx-auto mt-24 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
+        className="max-w-6xl mx-auto mt-24 pt-10 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.4, duration: 0.5 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
       >
         <p className="text-[#888888] text-sm">
           Judah Oka &mdash; CS Student, Nile University of Abuja

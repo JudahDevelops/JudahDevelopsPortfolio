@@ -36,10 +36,10 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.55, delay: index * 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <div
         ref={cardRef}
@@ -77,14 +77,14 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-28 px-6">
+    <section id="experience" className="py-36 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-14"
         >
           <p className="text-xs uppercase tracking-[0.2em] mb-3 font-medium label-gradient">

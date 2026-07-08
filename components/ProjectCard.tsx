@@ -25,8 +25,8 @@ export interface Project {
 }
 
 export const cardVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
 function CardHeader({ project }: { project: Project }) {
@@ -92,10 +92,10 @@ export default function ProjectCard({ project }: { project: Project }) {
     <motion.div
       ref={cardRef}
       variants={cardVariants}
-      whileHover={{ y: -4 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      whileHover={{ y: -4, scale: 1.01 }}
+      transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
       onPointerMove={handlePointerMove}
-      className="glow-card gradient-border flex flex-col bg-[#111111] border border-[#1F1F1F] rounded-lg overflow-hidden transition-colors duration-300"
+      className="glow-card gradient-border flex flex-col bg-[#111111]/60 backdrop-blur-sm border border-[#1F1F1F] hover:border-[#2A2A2A] rounded-md overflow-hidden transition-colors duration-300"
     >
       {/* Pointer-tracking glow blob */}
       <div className="glow-blob" aria-hidden="true" />
@@ -114,7 +114,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.stack.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 text-xs font-medium bg-[#0A0A0A] border border-[#1F1F1F] text-[#888888] rounded"
+              className="px-2.5 py-1 text-xs font-medium bg-[#0A0A0A] border border-[#1F1F1F] text-[#888888] rounded hover:border-[#2A2A2A] hover:text-white/70 transition-colors duration-200"
             >
               {tag}
             </span>
@@ -127,7 +127,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded transition-colors duration-200"
+              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:bg-white/[0.03] transition-colors duration-200"
             >
               <GitHubIcon size={15} />
               GitHub
@@ -139,7 +139,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded transition-colors duration-200"
+              className="gradient-border inline-flex items-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-white text-sm font-medium rounded hover:bg-white/[0.03] transition-colors duration-200"
             >
               Live Site
               <ExternalLink size={12} className="opacity-60" />

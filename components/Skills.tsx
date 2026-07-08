@@ -41,8 +41,8 @@ const containerVariants: Variants = {
 };
 
 const groupVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
 const tagVariants: Variants = {
@@ -56,13 +56,13 @@ const tagVariants: Variants = {
 
 export default function Skills() {
   return (
-    <section className="py-32 px-6">
+    <section id="skills" className="py-36 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-16"
         >
           <p className="text-xs uppercase tracking-[0.2em] mb-4 font-medium label-gradient">
@@ -74,7 +74,7 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -82,9 +82,10 @@ export default function Skills() {
         >
           {skillGroups.map((group) => (
             <motion.div key={group.category} variants={groupVariants}>
-              <h3 className="text-xs uppercase tracking-[0.2em] text-[#888888] mb-5 font-medium">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-[#888888] font-medium">
                 {group.category}
               </h3>
+              <div className="h-px w-8 bg-gradient-to-r from-[#00D4FF] to-transparent mt-2 mb-5" />
               <motion.div
                 className="flex flex-wrap gap-2.5"
                 variants={containerVariants}
@@ -96,7 +97,7 @@ export default function Skills() {
                   <motion.span
                     key={skill}
                     variants={tagVariants}
-                    className="gradient-border px-3.5 py-2 text-sm font-medium bg-[#111111] border border-[#1F1F1F] text-white rounded transition-colors duration-200 cursor-default"
+                    className="px-3.5 py-2 text-sm font-medium bg-[#111111] border border-[#1F1F1F] text-white rounded hover:bg-[#1A1A1A] hover:border-[#2A2A2A] transition-all duration-200 cursor-default"
                   >
                     {skill}
                   </motion.span>
