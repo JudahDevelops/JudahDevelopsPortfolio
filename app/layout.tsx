@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-inter",
+  axes: ["wdth"],
+  variable: "--font-archivo",
 });
 
 export const metadata: Metadata = {
-  title: "Judah Oka — Automation, AI Consulting & Web Dev",
+  title: "Judah Oka — Chief AI Officer",
   description:
-    "Portfolio of Judah Oka — CS student at Nile University of Abuja building production-grade automation systems, AI-powered outreach workflows, and web applications.",
+    "Judah Oka maps how Nigerian businesses actually run, then builds the systems that take the manual work out of it. Chief AI Officer at Multonion.",
 };
 
 export default function RootLayout({
@@ -19,11 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full bg-bg text-text font-sans">
-        <div className="noise-overlay" aria-hidden="true" />
-        {children}
-      </body>
+    <html lang="en" className={archivo.variable}>
+      <body>{children}</body>
     </html>
   );
 }
