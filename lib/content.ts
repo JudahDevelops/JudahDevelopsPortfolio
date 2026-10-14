@@ -44,7 +44,7 @@ export const engagements: Engagement[] = [
     role: "Discovery, proposal and working demo",
     status: "Demo built, Sep 2026",
     summary:
-      "A practice where one person approves every payment, across jobs that each pull in about a dozen people. I built a working demo the principal can open on a phone before committing to anything.",
+      "A design and project management practice that wants spending, hours and instructions on every job recorded in one place. I built a working demo the principal can open on a phone before committing to anything.",
     systems: ["Expenditure tracking", "Time tracking", "Project control"],
     tint: "yellow",
   },

@@ -9,9 +9,13 @@ No test suite configured.
 
 ## Project Map
 
-Single-page portfolio built with Next.js 16 (App Router) and plain CSS. No client JavaScript: the page is a server component and the hero animation is CSS-only.
+Single-page portfolio built with Next.js 16 (App Router) and plain CSS. The hero animation is CSS-only; the only client JS is `CabinetMotion`.
 
-- `app/page.tsx` — The whole page: header, hero (with the `Slips` figure), clients, method, builds, websites, tools, experience, contact
+- `app/page.tsx` — Header, hero (with the `Slips` figure), `<Cabinet />`, contact
+- `components/Cabinet.tsx` — The six content sections as folders (clients, method, builds, websites, tools, experience). Folder specs and card markup live here; server component
+- `components/CabinetMotion.tsx` — The only client JS. Adds `is-live` to the cabinet and drives the folder stack and card shuffle from scroll. Off under reduced motion
+- `app/cabinet.css` — Folder/card styles: static layout by default, sticky stack under `.cabinet.is-live`
+- `scrollcraft/` — scroll-craft BRIEF.md and FINGERPRINTS.md; `lab/` (screenshots) is gitignored
 - `app/globals.css` — Design tokens on `:root` (light + dark), type scale, every section's layout
 - `app/layout.tsx` — Archivo (variable, with `wdth` axis) via `next/font/google`, metadata
 - `lib/content.ts` — All copy and project data: `engagements`, `method`, `builds`, `sites`, `tools`, `experience`. Edit content here, not in the page
@@ -24,6 +28,14 @@ Single-page portfolio built with Next.js 16 (App Router) and plain CSS. No clien
 - **Type:** Archivo only. Headlines use `font-stretch: 125%` (expanded); body at normal width.
 - **Numbering** appears only on the 10-step method, because it is a real sequence.
 - **Avoid:** all-caps eyebrow labels, monospace data labels, arrows on links, gradient glows, identical card grids.
+
+## The Filing Cabinet
+
+Every section between the hero and contact is a paper folder (`Cabinet.tsx`). Live mode: folders are sticky siblings in one `.cabinet`, each sticking `--peek` px lower than the last, so earlier folders stay behind with their tabs showing (tabs are links that jump to that folder). After each folder a `.folder-run` spacer (`--n` cards × `--step` svh) gives scroll room for the shuffle: a card slides out of the pocket, then files back into the back of the pile as the next one comes out. Desktop: pocket left, card right. Phone: card in the middle, pocket below, cards swap sideways.
+
+- Static fallback (no JS, reduced motion) is the same markup as a normal grid. Keep it working.
+- To add a card: add data in `lib/content.ts`; the folder's scroll length grows automatically.
+- Verify with the scroll-craft harness: `?sc-verify` in the URL adds harness markers and `html.sc-ready`. Run from a dir with `playwright-core` (e.g. `~/Work/group39-learn`): `SCROLLCRAFT_CHROME=/usr/bin/brave node ~/.claude/skills/scroll-craft/scripts/shoot.mjs --url "http://localhost:3000/?sc-verify" --out <repo>/scrollcraft/lab/shots`, plus `--width 390 --height 844` and `--height 664` for phones.
 
 ## Content Rules
 

@@ -1,12 +1,4 @@
-import Image from "next/image";
-import {
-  builds,
-  engagements,
-  experience,
-  method,
-  sites,
-  tools,
-} from "@/lib/content";
+import Cabinet from "@/components/Cabinet";
 
 const EMAIL = "judahdevelops@gmail.com";
 const WHATSAPP = "https://wa.me/2349035837363";
@@ -93,7 +85,7 @@ export default function Home() {
           <a href="#clients">Clients</a>
           <a href="#method">Method</a>
           <a href="#builds">Builds</a>
-          <a href="#experience">Experience</a>
+          <a href="#experience">Work history</a>
           <a href="#contact" className="keep">
             Contact
           </a>
@@ -125,149 +117,7 @@ export default function Home() {
           <Slips />
         </section>
 
-        <section id="clients" className="wrap section">
-          <div className="section-head">
-            <h2 className="h2">Who I&apos;m working with</h2>
-            <p className="muted">
-              Clients are described by sector, not name. Every engagement
-              starts in the room with the people doing the work, before anything
-              gets built.
-            </p>
-          </div>
-          <div className="engagements">
-            {engagements.map((e) => (
-              <article key={e.who} className={`engagement ${e.tint}`}>
-                <div className="meta">
-                  <h3 className="h3">{e.who}</h3>
-                  <p className="muted small">{e.where}</p>
-                  <p className="status">{e.status}</p>
-                </div>
-                <div>
-                  <p className="small muted">{e.role}</p>
-                  <p className="summary">{e.summary}</p>
-                </div>
-                <ul aria-label={`Systems for ${e.who}`}>
-                  {e.systems.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="method" className="wrap section">
-          <div className="section-head">
-            <h2 className="h2">How an engagement runs</h2>
-            <p className="muted">
-              The same ten steps for every client. Each phase goes into daily
-              use before the next one starts, so the client is only ever
-              committed to the phase in front of them.
-            </p>
-          </div>
-          <ol className="method">
-            {method.map((m) => (
-              <li key={m.step}>
-                <strong>{m.step}</strong>
-                <span>{m.detail}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section id="builds" className="wrap section">
-          <div className="section-head">
-            <h2 className="h2">Automations you can open</h2>
-            <p className="muted">
-              Public n8n workflows. Each repository has the workflow file to
-              import; the first three have recorded demos.
-            </p>
-          </div>
-          <ul className="builds">
-            {builds.map((b) => (
-              <li key={b.title}>
-                <h3 className="h3">{b.title}</h3>
-                <p>{b.description}</p>
-                <p className="stack">{b.stack.join(", ")}</p>
-                <div className="links">
-                  <a href={b.github}>Workflow on GitHub</a>
-                  {b.demo && <a href={b.demo}>Watch demo</a>}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="websites" className="wrap section">
-          <div className="section-head">
-            <h2 className="h2">Websites and dashboards</h2>
-            <p className="muted">
-              Shipped for clients at Belsoft Systems, from design through
-              deployment.
-            </p>
-          </div>
-          <div className="sites">
-            {sites.map((s) => (
-              <article key={s.title} className={s.image ? "site" : "site site-plain"}>
-                {s.image && (
-                  <figure>
-                    <Image
-                      src={s.image}
-                      alt={`${s.title} home page`}
-                      fill
-                      sizes="(max-width: 760px) 100vw, 560px"
-                    />
-                  </figure>
-                )}
-                <h3 className="h3">{s.title}</h3>
-                <p>{s.description}</p>
-                <p className="stack">{s.stack.join(", ")}</p>
-                <div className="links">
-                  <a href={s.href}>{s.linkLabel}</a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="tools" className="wrap section">
-          <div className="section-head">
-            <h2 className="h2">Things I build for myself</h2>
-          </div>
-          <ul className="tools">
-            {tools.map((t) => (
-              <li key={t.title}>
-                <h3 className="h3">{t.title}</h3>
-                <p className="muted">{t.description}</p>
-                {t.href && (
-                  <div className="links">
-                    <a href={t.href}>View on GitHub</a>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="experience" className="wrap section">
-          <div className="section-head">
-            <h2 className="h2">Experience</h2>
-          </div>
-          <ul className="experience">
-            {experience.map((x) => (
-              <li key={x.org}>
-                <div>
-                  <h3 className="h3">{x.org}</h3>
-                </div>
-                <div>
-                  <p>{x.role}</p>
-                  {x.detail && <p className="muted small">{x.detail}</p>}
-                </div>
-                <p className="when">{x.when}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <Cabinet />
 
         <section id="contact" className="wrap contact">
           <h2 className="h2">Tell me how your business runs today.</h2>

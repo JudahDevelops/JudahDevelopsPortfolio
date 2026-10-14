@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "./globals.css";
+import "./cabinet.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -9,7 +10,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Judah Oka — Chief AI Officer",
+  title: "Judah Oka, Chief AI Officer",
   description:
     "Judah Oka maps how Nigerian businesses actually run, then builds the systems that take the manual work out of it. Chief AI Officer at Multonion.",
 };

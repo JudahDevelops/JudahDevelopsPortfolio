@@ -1,0 +1,403 @@
+/* ==========================================================================
+   The filing cabinet.
+   Each section is a paper folder. Static by default (no JS, reduced motion):
+   folders sit one after another with their cards laid out. With `.is-live`,
+   folders stick and stack, earlier ones tucked back with their tabs showing,
+   and CabinetMotion shuffles the cards in and out of each folder's pocket.
+   ========================================================================== */
+
+.folder {
+  --tab-h: 44px;
+  --peek: 9px;
+  --stick: 12px;
+  --pad: clamp(18px, 3vw, 36px);
+  --tab-gap: 6px;
+  --tab-w: calc((100% - 5 * var(--tab-gap)) / 6);
+  --f-ink: #141c4d;
+  --f-bg: #e8d7aa;
+  --f-flap: #dcc890;
+  --f-soft: #4b4530;
+  scroll-margin-top: 12px;
+}
+
+.folder[data-tone="manila"] { --f-bg: #e8d7aa; --f-flap: #dcc890; --f-soft: #4b4530; }
+.folder[data-tone="slate"]  { --f-bg: #c9d4ea; --f-flap: #b8c5e1; --f-soft: #36405e; }
+.folder[data-tone="sage"]   { --f-bg: #c6dbc0; --f-flap: #b4cfac; --f-soft: #34482f; }
+.folder[data-tone="rose"]   { --f-bg: #efcbd3; --f-flap: #e6b7c2; --f-soft: #5a3540; }
+.folder[data-tone="straw"]  { --f-bg: #ece08f; --f-flap: #e2d474; --f-soft: #4c4520; }
+.folder[data-tone="teal"]   { --f-bg: #bddfdc; --f-flap: #a8d3cf; --f-soft: #26484a; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .folder { --f-ink: #eef0fa; }
+  :root:not([data-theme="light"]) .folder[data-tone="manila"] { --f-bg: #3a3220; --f-flap: #463c27; --f-soft: #d8cdb0; }
+  :root:not([data-theme="light"]) .folder[data-tone="slate"]  { --f-bg: #24305a; --f-flap: #2d3b6b; --f-soft: #c4cdea; }
+  :root:not([data-theme="light"]) .folder[data-tone="sage"]   { --f-bg: #22392b; --f-flap: #2a4534; --f-soft: #c1d6bd; }
+  :root:not([data-theme="light"]) .folder[data-tone="rose"]   { --f-bg: #46283a; --f-flap: #533046; --f-soft: #e6c6d0; }
+  :root:not([data-theme="light"]) .folder[data-tone="straw"]  { --f-bg: #3d381b; --f-flap: #4a4421; --f-soft: #ddd5a6; }
+  :root:not([data-theme="light"]) .folder[data-tone="teal"]   { --f-bg: #1d3c3f; --f-flap: #24494c; --f-soft: #b9d9d6; }
+}
+
+.cabinet {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 96px) var(--gutter) 0;
+}
+
+/* ---------- Folder shell (shared) ---------- */
+.folder + .folder-run + .folder {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+.folder-inner {
+  display: grid;
+  grid-template-rows: var(--tab-h) auto;
+  color: var(--f-ink);
+}
+.tab-row {
+  position: relative;
+}
+.tab {
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--i) * (var(--tab-w) + var(--tab-gap)));
+  width: var(--tab-w);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 10px 10px 0 0;
+  background: var(--f-bg);
+  color: var(--f-ink);
+  font-weight: 650;
+  font-stretch: 105%;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+.tab-short {
+  display: none;
+}
+.tab:focus-visible {
+  outline-offset: -4px;
+}
+.folder-body {
+  position: relative;
+  background: var(--f-bg);
+  border-radius: 12px;
+  padding: var(--pad);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 18px 40px -24px rgba(20, 28, 77, 0.45);
+}
+.cabinet > .folder:first-child .folder-body {
+  border-top-left-radius: 0;
+}
+.folder-title {
+  font-stretch: 125%;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  font-size: clamp(1.7rem, 3.6vw, 2.75rem);
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.folder-intro {
+  margin-top: 12px;
+  max-width: 44ch;
+  color: var(--f-soft);
+  text-wrap: pretty;
+}
+
+/* ---------- Cards (shared) ---------- */
+.cards {
+  list-style: none;
+}
+.card-sheet {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  padding: 1.5em 1.5em 1.4em;
+  border-radius: 4px;
+  background: var(--sheet);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(20, 28, 77, 0.06), 0 10px 26px -14px rgba(20, 28, 77, 0.45);
+  overflow: hidden;
+}
+.card[data-sheet="pink"] .card-sheet {
+  background: var(--copy-pink);
+}
+.card[data-sheet="yellow"] .card-sheet {
+  background: var(--copy-yellow);
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25em 1em;
+  flex-wrap: wrap;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.card-title {
+  font-stretch: 115%;
+  font-weight: 750;
+  font-size: 1.35em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.card-title-lg {
+  font-size: 2em;
+  font-stretch: 125%;
+}
+.card-meta,
+.card-role {
+  color: var(--graphite);
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+}
+.card-role-lg {
+  color: var(--ink);
+  font-size: 1.15em;
+  font-weight: 600;
+}
+.card-text {
+  max-width: 54ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.card-list {
+  list-style: none;
+  font-size: 0.92em;
+}
+.card-list li {
+  padding: 0.45em 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.card-list li:last-child {
+  border-bottom: 0;
+}
+.card-foot {
+  margin-top: auto;
+  font-weight: 650;
+  font-size: 0.9em;
+  color: var(--biro);
+}
+.card-stack {
+  color: var(--graphite);
+  font-size: 0.85em;
+  font-stretch: 92%;
+}
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 1.2em;
+  margin-top: auto;
+  font-weight: 650;
+}
+.card-links a {
+  color: var(--biro);
+  text-underline-offset: 3px;
+}
+.card-step {
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: 4.5em;
+  line-height: 0.9;
+  color: var(--biro);
+  font-variant-numeric: tabular-nums;
+  margin-top: auto;
+}
+.card-image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 1;
+  min-height: 0;
+  margin: -1.5em -1.5em 0.25em;
+  overflow: hidden;
+  background: var(--paper);
+}
+.card-image img {
+  object-fit: cover;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Static layout (default, reduced motion, no JS) ---------- */
+.out-slot,
+.pocket {
+  display: none;
+}
+.cabinet:not(.is-live) .cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+.cabinet:not(.is-live) .cards:has(> :nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.cabinet:not(.is-live) .folder-run {
+  display: none;
+}
+@media (max-width: 760px) {
+  .cabinet:not(.is-live) .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Live layout ---------- */
+.cabinet.is-live .folder {
+  position: sticky;
+  top: calc(var(--stick) + var(--i) * var(--peek));
+  height: calc(100svh - 2 * var(--stick) - var(--i) * var(--peek));
+}
+.cabinet.is-live .folder + .folder-run + .folder {
+  margin-top: 0;
+}
+.cabinet.is-live .folder-run {
+  height: calc(var(--n) * var(--step) * 1svh);
+}
+.cabinet.is-live .folder-inner {
+  height: 100%;
+  grid-template-rows: var(--tab-h) minmax(0, 1fr);
+  transform-origin: 50% 0;
+  transform: scale(calc(1 - var(--depth, 0) * 0.018));
+  will-change: transform;
+}
+.cabinet.is-live .folder-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "head out"
+    "pocket out";
+  column-gap: clamp(24px, 4vw, 56px);
+  row-gap: 24px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cabinet.is-live .folder-head {
+  grid-area: head;
+}
+.cabinet.is-live .out-slot {
+  display: block;
+  grid-area: out;
+  width: 100%;
+  max-width: 620px;
+  height: min(100%, 540px);
+  align-self: center;
+  justify-self: end;
+  min-height: 0;
+}
+.cabinet.is-live .pocket {
+  display: block;
+  grid-area: pocket;
+  position: relative;
+  min-height: 0;
+}
+.cabinet.is-live .flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * var(--pad));
+  height: 62%;
+  z-index: 50;
+  background: var(--f-flap);
+  border-radius: 10px 10px 0 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 -10px 24px -16px rgba(20, 28, 77, 0.5);
+}
+.cabinet.is-live .cards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cabinet.is-live .card {
+  position: absolute;
+  transform-origin: 0 0;
+  will-change: transform;
+  container-type: size;
+  font-size: clamp(0.82rem, 3.4cqh, 1.15rem);
+  pointer-events: none;
+}
+.cabinet.is-live .card[data-out-now] {
+  pointer-events: auto;
+}
+
+@media (max-width: 760px) {
+  .folder {
+    --tab-h: 34px;
+    --peek: 5px;
+    --stick: 8px;
+    --tab-gap: 3px;
+    --pad: 14px;
+  }
+  .tab {
+    padding: 0 8px;
+    font-size: 0.78rem;
+    border-radius: 7px 7px 0 0;
+  }
+  .card-sheet {
+    padding: 1.2em 1.15em 1.1em;
+  }
+  .card-image {
+    margin: -1.2em -1.15em 0.2em;
+  }
+  .cabinet.is-live .folder-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) clamp(88px, 15svh, 120px);
+    grid-template-areas:
+      "head"
+      "out"
+      "pocket";
+    row-gap: 14px;
+  }
+  .cabinet.is-live .out-slot {
+    max-width: none;
+    height: min(100%, 520px);
+  }
+  .cabinet.is-live .folder-title {
+    font-size: clamp(1.45rem, 6.4vw, 1.9rem);
+  }
+  .cabinet.is-live .folder-intro {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  .cabinet.is-live .card {
+    font-size: clamp(0.78rem, 3.3cqh, 1rem);
+  }
+}
+@media (max-width: 560px) {
+  .tab-full {
+    display: none;
+  }
+  .tab-short {
+    display: inline;
+  }
+}
+@media (max-width: 760px) and (max-height: 720px) {
+  .cabinet.is-live .folder-intro {
+    display: none;
+  }
+  .cabinet.is-live .folder-body {
+    grid-template-rows: auto minmax(0, 1fr) 72px;
+    row-gap: 10px;
+  }
+}
+
+/* Harness markers, only present with ?sc-verify. */
+.sc-mark {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  visibility: hidden;
+  pointer-events: none;
+}
